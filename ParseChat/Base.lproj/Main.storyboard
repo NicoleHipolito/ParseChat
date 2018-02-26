@@ -102,29 +102,42 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-QU-vT3">
-                                                    <rect key="frame" x="23" y="19" width="345" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="23" y="13" width="345" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSM-Dl-oRy">
-                                                    <rect key="frame" x="23" y="48" width="345" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMl-Hd-C2d">
+                                                    <rect key="frame" x="23" y="36" width="322" height="84"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSM-Dl-oRy">
+                                                            <rect key="frame" x="16" y="16" width="50.5" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="1" green="0.87229935160000005" blue="0.84503319489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="cSM-Dl-oRy" firstAttribute="leading" secondItem="sMl-Hd-C2d" secondAttribute="leadingMargin" constant="8" id="25h-Rn-PfN"/>
+                                                        <constraint firstItem="cSM-Dl-oRy" firstAttribute="top" secondItem="sMl-Hd-C2d" secondAttribute="topMargin" constant="8" id="AxF-SS-Rgv"/>
+                                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="cSM-Dl-oRy" secondAttribute="bottom" constant="8" id="TXA-0V-MS4"/>
+                                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="cSM-Dl-oRy" secondAttribute="trailing" constant="8" id="a3N-gI-okv"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cSM-Dl-oRy" firstAttribute="leading" secondItem="jzA-qc-gmb" secondAttribute="leadingMargin" constant="8" id="QK6-w5-cHP"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="sMl-Hd-C2d" secondAttribute="trailing" constant="8" id="50C-h5-yfw"/>
+                                                <constraint firstItem="sMl-Hd-C2d" firstAttribute="leading" secondItem="jzA-qc-gmb" secondAttribute="leadingMargin" constant="8" id="Q2O-MB-jY0"/>
                                                 <constraint firstItem="xCb-QU-vT3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jzA-qc-gmb" secondAttribute="trailingMargin" constant="8" id="Wzq-Jt-q7F"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="cSM-Dl-oRy" secondAttribute="bottom" constant="8" id="b5C-vX-J9G"/>
-                                                <constraint firstItem="cSM-Dl-oRy" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jzA-qc-gmb" secondAttribute="trailingMargin" constant="8" id="gpH-Ut-HwB"/>
-                                                <constraint firstItem="cSM-Dl-oRy" firstAttribute="top" secondItem="xCb-QU-vT3" secondAttribute="bottom" constant="8" id="oB6-Tb-7pd"/>
-                                                <constraint firstItem="xCb-QU-vT3" firstAttribute="top" secondItem="jzA-qc-gmb" secondAttribute="topMargin" constant="8" id="uXD-ju-OhJ"/>
+                                                <constraint firstItem="sMl-Hd-C2d" firstAttribute="top" secondItem="xCb-QU-vT3" secondAttribute="bottom" constant="2" id="fPd-mK-ZRK"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="sMl-Hd-C2d" secondAttribute="bottom" constant="8" id="uNk-2l-GBg"/>
+                                                <constraint firstItem="xCb-QU-vT3" firstAttribute="top" secondItem="jzA-qc-gmb" secondAttribute="topMargin" constant="2" id="uXD-ju-OhJ"/>
                                                 <constraint firstItem="xCb-QU-vT3" firstAttribute="leading" secondItem="jzA-qc-gmb" secondAttribute="leadingMargin" constant="8" id="xWU-43-j02"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bubbleView" destination="sMl-Hd-C2d" id="z3L-i3-T31"/>
                                             <outlet property="messageLabel" destination="cSM-Dl-oRy" id="sg0-Pd-azc"/>
                                             <outlet property="userLabel" destination="xCb-QU-vT3" id="i1z-J8-7Vr"/>
                                         </connections>

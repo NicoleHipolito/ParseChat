@@ -13,6 +13,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl!
     var messages = [String]()
     var usernames = [String]()
     
@@ -25,6 +26,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.rowHeight = UITableViewAutomaticDimension
         // Provide an estimated row height. Used for calculating scroll indicator
         tableView.estimatedRowHeight = 50
+        tableView.separatorStyle = .none
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ChatViewController.didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.fetchMessages(_:)), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
     }
@@ -59,13 +64,17 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 print("Info:! (error?.localizedDescription)")
             }
         }
-//        self.refreshControl.endRefreshing()
+        self.refreshControl.endRefreshing()
+    }
+    
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
+        fetchMessages(Any?.self)
     }
     
     @IBAction func SendTapped(_ sender: Any) {
         let chatMessage = PFObject(className: "Message")
         chatMessage["text"] = messageField.text ?? ""
-//        chatMessage["user"] = PFUser.current()?.username as! String
+//        chatMessage["user"] = PFUser.current()?.username!
 //        print(PFUser.current()?.username as! String)
         chatMessage.saveInBackground { (success, error) in
             if success {
@@ -83,6 +92,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
+        cell.bubbleView.layer.cornerRadius = 16
+        cell.bubbleView.clipsToBounds = true
         let message = messages[indexPath.row]
         let username = usernames[indexPath.row]
         print(message)

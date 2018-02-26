@@ -12,6 +12,7 @@ class ChatCell: UITableViewCell {
 
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var bubbleView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
